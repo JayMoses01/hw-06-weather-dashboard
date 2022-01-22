@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./style.css" />
+  <!-- <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet"> -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"> -->
+  <!-- <link rel="stylesheet" href="./jass.css" /> -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"> -->
+   <title>Weather Dashboard</title>
+</head>
+
+
+<header class="hero" id="hero">
+    <h1 class="title" id="title">Weather Dashboard</h1>
+  </header>
+
+
+<body class="container" id="container">
+
+    <section class="left-section" id="left-section">
+
+        <section class="search-container" id="search-container">
+            <h3 class="search-city">Search for a City</h3>
+              <form id="user-form" class="card-body">
+                <label class="form-label" for="input-city"></label>
+                <input name="city-input" id="city-input" type="text" autofocus="true" class="form-input" placeholder="San Diego"/>
+                <button type="search" class="search-btn">Search</button>
+              </form>
+        </section>
+
+        <section class="searched-cities" id="searched-cities">
+            <button class="searched-buttons">searched button</button>
+        </section>
+
+    </section>
+
+
+
+
+
+    <section class="right-section" id="right-section">
+
+        <div id="today-card">
+            <h2 id="city">City (<span id="current-date">Date</span>)</h2>
+            <ul>
+                <li>Temp: </li>
+                <li>Wind: </li>
+                <li>Humidity: </li>
+                <li>UV Index: </li>
+            </ul>
+        </div>
+      
+        <div id="forecast-section">
+            <h2 id="forecast-title">5-Day Forecast</h2>
+            <div id="forecast-cards-div">
+                <div class="forecast-card" id="day-1">
+                    <h2 id="card-1-header">Day 1</h2>
+                    <ul id="day-1-ul">
+                        <li id="day-1-temp">Temp: </li>
+                        <li id="day-1-wind">Wind: </li>
+                        <li id="day-1-humidity">Humidity: </li>
+                    </ul>
+                </div>
+                <div class="forecast-card" id="day-2">
+                    <h2 id="card-1-header">Day 2</h2>
+                    <ul id="day-2-ul">
+                        <li id="day-2-temp">Temp: </li>
+                        <li id="day-2-wind">Wind: </li>
+                        <li id="day-2-humidity">Humidity: </li>
+                    </ul>
+                </div>
+                <div class="forecast-card" id="day-3">
+                    <h2 id="card-1-header">Day 3</h2>
+                    <ul id="day-3-ul">
+                        <li id="day-3-temp">Temp: </li>
+                        <li id="day-3-wind">Wind: </li>
+                        <li id="day-3-humidity">Humidity: </li>
+                    </ul>
+                </div>
+                <div class="forecast-card" id="day-4">
+                    <h2 id="card-1-header">Day 4</h2>
+                    <ul id="day-4-ul">
+                        <li id="day-4-temp">Temp: </li>
+                        <li id="day-4-wind">Wind: </li>
+                        <li id="day-4-humidity">Humidity: </li>
+                    </ul>
+                </div>
+                <div class="forecast-card" id="day-5">
+                    <h2 id="card-1-header">Day 5</h2>
+                    <ul id="day-5-ul">
+                        <li id="day-5-temp">Temp: </li>
+                        <li id="day-5-wind">Wind: </li>
+                        <li id="day-5-humidity">Humidity: </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</body>
+
+<script src="./script.js"></script>
+</html>
