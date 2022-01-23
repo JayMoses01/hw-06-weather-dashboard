@@ -112,6 +112,22 @@
     padding-left: 0px;
 }
 
+#city-date {
+    width: 100%;
+}
+
+/*
+#city {
+    width: 50%;
+    float: left;
+}
+
+#current-date {
+    width: 50%;
+    float: left;
+}
+*/
+
 #today-card ul {
     list-style: none;
     margin-left: 5px;
