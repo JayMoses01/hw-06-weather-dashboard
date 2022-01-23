@@ -26,7 +26,7 @@
             <h3 class="search-city">Search for a City</h3>
               <form id="user-form" class="card-body">
                 <label class="form-label" for="input-city"></label>
-                <input name="city-input" id="city-input" type="text" autofocus="true" class="form-input" placeholder="San Diego"/>
+                <input name="city-input" class="city-input" id="city-input" type="text" autofocus="true" class="form-input" placeholder="San Diego"/>
                 <button type="search" class="search-btn">Search</button>
               </form>
         </section>
@@ -37,63 +37,59 @@
 
     </section>
 
-
-
-
-
     <section class="right-section" id="right-section">
 
         <div id="today-card">
             <h2 id="city">City (<span id="current-date">Date</span>)</h2>
             <ul>
-                <li>Temp: </li>
-                <li>Wind: </li>
-                <li>Humidity: </li>
-                <li>UV Index: </li>
+                <li id="today-temp">Temp: </li>
+                <li id="today-wind">Wind: </li>
+                <li id="today-humidity">Humidity: </li>
+                <li id="today-uv-index">UV Index: </li>
             </ul>
         </div>
       
         <div id="forecast-section">
             <h2 id="forecast-title">5-Day Forecast</h2>
-            <div id="forecast-cards-div">
+            <div class="forecast-cards-div" id="forecast-cards-div">
                 <div class="forecast-card" id="day-1">
-                    <h2 id="card-1-header">Day 1</h2>
-                    <ul id="day-1-ul">
-                        <li id="day-1-temp">Temp: </li>
-                        <li id="day-1-wind">Wind: </li>
-                        <li id="day-1-humidity">Humidity: </li>
+                    <h2 class="forecast-card-h2" id="card-1-header">Day 1</h2>
+                    <ul class="forecast-card-ul" id="day-1-ul">
+                        <li class="forecast-card-li" id="day-1-temp">Temp: </li>
+                        <li class="forecast-card-li" id="day-1-wind">Wind: </li>
+                        <li class="forecast-card-li" id="day-1-humidity">Humidity: </li>
                     </ul>
                 </div>
                 <div class="forecast-card" id="day-2">
-                    <h2 id="card-1-header">Day 2</h2>
-                    <ul id="day-2-ul">
-                        <li id="day-2-temp">Temp: </li>
-                        <li id="day-2-wind">Wind: </li>
-                        <li id="day-2-humidity">Humidity: </li>
+                    <h2 class="forecast-card-h2" id="card-2-header">Day 2</h2>
+                    <ul class="forecast-card-ul" id="day-2-ul">
+                        <li class="forecast-card-li" id="day-2-temp">Temp: </li>
+                        <li class="forecast-card-li" id="day-2-wind">Wind: </li>
+                        <li class="forecast-card-li" id="day-2-humidity">Humidity: </li>
                     </ul>
                 </div>
                 <div class="forecast-card" id="day-3">
-                    <h2 id="card-1-header">Day 3</h2>
-                    <ul id="day-3-ul">
-                        <li id="day-3-temp">Temp: </li>
-                        <li id="day-3-wind">Wind: </li>
-                        <li id="day-3-humidity">Humidity: </li>
+                    <h2 class="forecast-card-h2" id="card-3-header">Day 3</h2>
+                    <ul class="forecast-card-ul" id="day-3-ul">
+                        <li class="forecast-card-li" id="day-3-temp">Temp: </li>
+                        <li class="forecast-card-li" id="day-3-wind">Wind: </li>
+                        <li class="forecast-card-li" id="day-3-humidity">Humidity: </li>
                     </ul>
                 </div>
                 <div class="forecast-card" id="day-4">
-                    <h2 id="card-1-header">Day 4</h2>
-                    <ul id="day-4-ul">
-                        <li id="day-4-temp">Temp: </li>
-                        <li id="day-4-wind">Wind: </li>
-                        <li id="day-4-humidity">Humidity: </li>
+                    <h2 class="forecast-card-h2" id="card-4-header">Day 4</h2>
+                    <ul class="forecast-card-ul" id="day-4-ul">
+                        <li class="forecast-card-li" id="day-4-temp">Temp: </li>
+                        <li class="forecast-card-li" id="day-4-wind">Wind: </li>
+                        <li class="forecast-card-li" id="day-4-humidity">Humidity: </li>
                     </ul>
                 </div>
                 <div class="forecast-card" id="day-5">
-                    <h2 id="card-1-header">Day 5</h2>
-                    <ul id="day-5-ul">
-                        <li id="day-5-temp">Temp: </li>
-                        <li id="day-5-wind">Wind: </li>
-                        <li id="day-5-humidity">Humidity: </li>
+                    <h2 class="forecast-card-h2" id="card-5-header">Day 5</h2>
+                    <ul class="forecast-card-ul" id="day-5-ul">
+                        <li class="forecast-card-li" id="day-5-temp">Temp: </li>
+                        <li class="forecast-card-li" id="day-5-wind">Wind: </li>
+                        <li class="forecast-card-li" id="day-5-humidity">Humidity: </li>
                     </ul>
                 </div>
             </div>
@@ -103,5 +99,7 @@
 
 </body>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="./script.js"></script>
 </html>
