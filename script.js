@@ -37,84 +37,152 @@ var day03HumidEl = document.getElementById("day-3-humidity");
 var day04HumidEl = document.getElementById("day-4-humidity");
 var day05HumidEl = document.getElementById("day-5-humidity");
 
+var searchInputVal = document.querySelector('#city-input').value;
 
 
 
 
-/*
-function printResults(resultObj) {
-    console.log(resultObj);
-
-
-    // Replace HTML id "city" with cityInput
-    // Replace HTML id "current-date" with Moments.js current date
-    // Replace HTML id "today-temp" with today's temperature for the searched city.
-    // Replace HTML id "today-wind" with today's temperature for the searched city.
-    // Replace HTML id "today-humidity" with today's temperature for the searched city.
-    // Replace HTML id "today-uv-index" with today's temperature for the searched city.
-
-
-    // Replace HTML id "day-1" with forecast day 1 date for searched city.
-    // Replace HTML id "day-2" with forecast day 2 date for searched city.
-    // Replace HTML id "day-3" with forecast day 3 date for searched city.
-    // Replace HTML id "day-4" with forecast day 4 date for searched city.
-    // Replace HTML id "day-5" with forecast day 5 date for searched city.
-
-
-    // Replace HTML id "day-1-temp" with forecast day 1 temp for searched city.
-    // Replace HTML id "day-2-temp" with forecast day 2 temp for searched city.
-    // Replace HTML id "day-3-temp" with forecast day 3 temp for searched city.
-    // Replace HTML id "day-4-temp" with forecast day 4 temp for searched city.
-    // Replace HTML id "day-5-temp" with forecast day 5 temp for searched city.
-
-
-    // Replace HTML id "day-1-wind" with forecast day 1 wind for searched city.
-    // Replace HTML id "day-2-wind" with forecast day 2 wind for searched city.
-    // Replace HTML id "day-3-wind" with forecast day 3 wind for searched city.
-    // Replace HTML id "day-4-wind" with forecast day 4 wind for searched city.
-    // Replace HTML id "day-5-wind" with forecast day 5 wind for searched city.
-
-
-    // Replace HTML id "day-1-humidity" with forecast day 1 humidity for searched city.
-    // Replace HTML id "day-2-humidity" with forecast day 2 humidity for searched city.
-    // Replace HTML id "day-3-humidity" with forecast day 3 humidity for searched city.
-    // Replace HTML id "day-4-humidity" with forecast day 4 humidity for searched city.
-    // Replace HTML id "day-5-humidity" with forecast day 5 humidity for searched city.
-
-
-    // ORRRRRRR DO THIS: create new class="forecast-card" with the data
-    // Create 
-
-
-
-}
-*/
-
-
-
-
-function searchApi(searchInputVal) {
-    var queryURL = "api.openweathermap.org/data/2.5/weather?q=" + searchInputVal + "&appid=" + APIKey;
+function searchApiCurrent(searchInputVal) {
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchInputVal + "&appid=" + APIKey;
 
     fetch(queryURL)
-      .then(function (response) {
-        if (response.ok) {
-          console.log(response);
-          response.json().then(function (data) {
-            console.log(data);
-          //  displayWeather(data, city);
-          });
-        } else {
-          alert('Error: ' + response.statusText);
-        }
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        console.log(data);
+        var todayTemp = data.main.temp;
+        todayTempEl.textContent = "Temp: " + todayTemp;
+
+        var todayWind = data.wind.speed;
+        todayWindEl.textContent = "Wind: " + todayWind + " MPH";
+
+        var todayHumid = data.main.humidity;
+        console.log(todayHumid);
+        todayHumidEl.textContent = "Humidity: " + todayHumid + "%";
+
+        var cityLon = data.coord.lon;
+        console.log(cityLon);
+        localStorage.setItem("cityLon",cityLon);
+        var cityLat = data.coord.lat;
+        console.log(cityLat);
+        localStorage.setItem("cityLat",cityLat);
+
       })
       .catch(function (error) {
         alert('Unable to connect to OpenWeather');
       });
 
 
+
+
 }
 
+
+function searchApiOneCall(searchInputVal) {
+  var cityLon = localStorage.getItem("cityLon");
+  var cityLat = localStorage.getItem("cityLat");
+
+  
+  var queryURLOne = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&appid=" + APIKey;
+  
+  fetch(queryURLOne)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      console.log(data);
+     /* var todayTemp = data.main.temp;
+      todayTempEl.textContent = "Temp: " + todayTemp;
+
+      var todayWind = data.wind.speed;
+      todayWindEl.textContent = "Wind: " + todayWind + " MPH";
+
+      var todayHumid = data.main.humidity;
+      console.log(todayHumid);
+      todayHumidEl.textContent = "Humidity: " + todayHumid + "%";
+
+      var cityLon = data.coord.lon;
+      console.log(cityLon);
+      var cityLat = data.coord.lat;
+      console.log(cityLat);
+      */
+    })
+    .catch(function (error) {
+      alert('Unable to connect to OpenWeather');
+    });
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+/*
+function printResults() {
+  console.log();
+  searchApiCurrent();
+
+  // Replace HTML id "city" with cityInput
+  cityEl.textContent = searchInputVal;
+
+  // Replace HTML id "current-date" with Moments.js current date
+  // Replace HTML id "today-temp" with today's temperature for the searched city.
+  todayTempEl.textContent = todayTemp;
+
+  // Replace HTML id "today-wind" with today's temperature for the searched city.
+  // Replace HTML id "today-humidity" with today's temperature for the searched city.
+  // Replace HTML id "today-uv-index" with today's temperature for the searched city.
+
+
+  // Replace HTML id "day-1" with forecast day 1 date for searched city.
+  // Replace HTML id "day-2" with forecast day 2 date for searched city.
+  // Replace HTML id "day-3" with forecast day 3 date for searched city.
+  // Replace HTML id "day-4" with forecast day 4 date for searched city.
+  // Replace HTML id "day-5" with forecast day 5 date for searched city.
+
+
+  // Replace HTML id "day-1-temp" with forecast day 1 temp for searched city.
+  // Replace HTML id "day-2-temp" with forecast day 2 temp for searched city.
+  // Replace HTML id "day-3-temp" with forecast day 3 temp for searched city.
+  // Replace HTML id "day-4-temp" with forecast day 4 temp for searched city.
+  // Replace HTML id "day-5-temp" with forecast day 5 temp for searched city.
+
+
+  // Replace HTML id "day-1-wind" with forecast day 1 wind for searched city.
+  // Replace HTML id "day-2-wind" with forecast day 2 wind for searched city.
+  // Replace HTML id "day-3-wind" with forecast day 3 wind for searched city.
+  // Replace HTML id "day-4-wind" with forecast day 4 wind for searched city.
+  // Replace HTML id "day-5-wind" with forecast day 5 wind for searched city.
+
+
+  // Replace HTML id "day-1-humidity" with forecast day 1 humidity for searched city.
+  // Replace HTML id "day-2-humidity" with forecast day 2 humidity for searched city.
+  // Replace HTML id "day-3-humidity" with forecast day 3 humidity for searched city.
+  // Replace HTML id "day-4-humidity" with forecast day 4 humidity for searched city.
+  // Replace HTML id "day-5-humidity" with forecast day 5 humidity for searched city.
+
+
+  // ORRRRRRR DO THIS: create new class="forecast-card" with the data
+  // Create 
+
+  // Create searched buttons
+  /*var buildSearchBtn = document.createElement("button");
+  var citySearched = localStorage.getItem("city");
+  buildSearchBtn.setAttribute("class", "buildSearchBtn");
+  buildSearchBtn.textContent = citySearched; */
+
+
+/*
+}
+*/
 
 
 
@@ -124,7 +192,7 @@ function handleSearchFormSubmit(event) {
     event.preventDefault();
   
     var searchInputVal = document.querySelector('#city-input').value;
-    localStorage.setItem(cityEl,searchInputVal);
+    localStorage.setItem("city",searchInputVal);
 
     if (!searchInputVal) {
       console.error('You need a search input value!');
@@ -134,7 +202,10 @@ function handleSearchFormSubmit(event) {
 
     console.log(searchInputVal);
 
-    searchApi(searchInputVal);
+    searchApiCurrent(searchInputVal);
+    searchApiOneCall();
+   /* printResults(); */
+
 }
 
 
