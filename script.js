@@ -59,10 +59,6 @@ function searchApiCurrent(searchInputVal) {
 
         var unixDay00 = data.dt;
         var unixFormatDay00 = moment.unix(unixDay00).format("MM/DD/YYYY");
-        var weatherIcon = data.weather.icon;
-        console.log(weatherIcon);
-        day00El.textContent = unixFormatDay00 + " " + weatherIcon;
-
 
         var todayTemp = data.main.temp_max;
         todayTempEl.textContent = "Temp: " + todayTemp;
@@ -77,7 +73,12 @@ function searchApiCurrent(searchInputVal) {
         var cityLon = data.coord.lon;
         var cityLat = data.coord.lat;
 
+
         searchApiOneCall(cityLat, cityLon);
+
+
+        var weatherIconCurrent = data.weather.icon;
+        getIcon(weatherIconCurrent);
 
       })
       .catch(function (error) {
@@ -171,11 +172,6 @@ function searchApiOneCall(cityLat, cityLon) {
       day05HumidEl.textContent = "Humidity: " + day05Humid + "%";
 
 
-
-
-
-
-      
     })
     .catch(function (error) {
       alert('Unable to connect to OpenWeather');
@@ -187,6 +183,27 @@ function searchApiOneCall(cityLat, cityLon) {
 
 
 
+function getIcon (weatherIconCurrent) {
+  var iconURL = "http://openweathermap.org/img/wn/" + weatherIconCurrent + "2x.png";
+
+  fetch(iconURL)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      console.log(data);
+
+      console.log(weatherIcon);
+      day00El.textContent = unixFormatDay00 + " " + weatherIcon;
+
+    })
+    .catch(function (error) {
+      alert('Unable to connect to OpenWeather icon API');
+    });
+
+
+
+}
 
 
 
