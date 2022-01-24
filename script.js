@@ -60,6 +60,11 @@ function searchApiCurrent(searchInputVal) {
         var unixDay00 = data.dt;
         var unixFormatDay00 = moment.unix(unixDay00).format("MM/DD/YYYY");
 
+        var weatherIconCurrent = data.weather[0].icon;
+        // Fix the code below. I should be creating or appending the HTML element instead--not the concat like I'm currently doing.
+        var iconURL = "img src=" + "http://openweathermap.org/img/wn/" + weatherIconCurrent + "@.png" + "width='20' height='20'>";
+        day00El.textContent = unixFormatDay00 + " " + iconURL;
+
         var todayTemp = data.main.temp_max;
         todayTempEl.textContent = "Temp: " + todayTemp;
 
@@ -76,9 +81,9 @@ function searchApiCurrent(searchInputVal) {
 
         searchApiOneCall(cityLat, cityLon);
 
-
-        var weatherIconCurrent = data.weather.icon;
-        getIcon(weatherIconCurrent);
+        /*
+        var weatherIconCurrent = data.weather[0].icon;
+        getIcon(weatherIconCurrent); */
 
       })
       .catch(function (error) {
@@ -182,9 +187,9 @@ function searchApiOneCall(cityLat, cityLon) {
 }
 
 
-
+/*
 function getIcon (weatherIconCurrent) {
-  var iconURL = "http://openweathermap.org/img/wn/" + weatherIconCurrent + "2x.png";
+  var iconURL = "http://openweathermap.org/img/wn/" + weatherIconCurrent + "@.png";
 
   fetch(iconURL)
     .then(function(response) {
@@ -204,7 +209,7 @@ function getIcon (weatherIconCurrent) {
 
 
 }
-
+*/
 
 
 
