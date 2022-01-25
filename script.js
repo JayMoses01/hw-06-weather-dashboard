@@ -62,8 +62,17 @@ function searchApiCurrent(searchInputVal) {
 
         var weatherIconCurrent = data.weather[0].icon;
         // Fix the code below. I should be creating or appending the HTML element instead--not the concat like I'm currently doing.
-        var iconURL = "img src=" + "http://openweathermap.org/img/wn/" + weatherIconCurrent + "@.png" + "width='20' height='20'>";
-        day00El.textContent = unixFormatDay00 + " " + iconURL;
+        // var iconURL = "img src=" + "http://openweathermap.org/img/wn/" + weatherIconCurrent + "@.png" + "width='20' height='20'>";
+        // day00El.textContent = unixFormatDay00 + " " + iconURL;
+        // day00El.setAttribute('')
+
+        var day00IconEl = document.getElementById("today-icon");
+        //day00IconEl.append("<img src=" + "http://openweathermap.org/img/wn/" + weatherIconCurrent + "@.png");
+
+        var newIconToday = document.createElement("i");
+        day00IconEl.appendChild("<img src=" + "http://openweathermap.org/img/wn/" + weatherIconCurrent + "@.png" + ">");
+        currentDiv = document.getElementById("today-icon"); document.body.insertBefore(newIconToday, currentDiv);
+
 
         var todayTemp = data.main.temp_max;
         todayTempEl.textContent = "Temp: " + todayTemp;
