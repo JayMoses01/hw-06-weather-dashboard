@@ -44,7 +44,7 @@ var searchInputVal = document.querySelector('#city-input').value;
 
 
 function searchApiCurrent(searchInputVal) {
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchInputVal + "&appid=" + APIKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchInputVal + "&units=imperial" + "&appid=" + APIKey;
 
     fetch(queryURL)
       .then(function(response) {
@@ -62,7 +62,7 @@ function searchApiCurrent(searchInputVal) {
 
         var unixDay00 = data.dt;
         var unixFormatDay00 = moment.unix(unixDay00).format("MM/DD/YYYY");
-        day00El.textContent = unixFormatDay00;
+        day00El.textContent = "(" + unixFormatDay00 + ")";
 
         // Stores the weather icon for today into a variable
         var weatherIconCurrent = data.weather[0].icon;
@@ -74,7 +74,7 @@ function searchApiCurrent(searchInputVal) {
         day00IconEl.appendChild(newIconToday);
 
         var todayTemp = data.main.temp_max;
-        todayTempEl.textContent = "Temp: " + todayTemp;
+        todayTempEl.textContent = "Temp: " + todayTemp + "\xB0" + "F";
 
         var todayWind = data.wind.speed;
         todayWindEl.textContent = "Wind: " + todayWind + " MPH";
@@ -102,7 +102,7 @@ function searchApiCurrent(searchInputVal) {
 
 
 function searchApiOneCall(cityLat, cityLon) {
-  var queryURLOne = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&appid=" + APIKey;
+  var queryURLOne = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&units=imperial" + "&appid=" + APIKey;
   
   fetch(queryURLOne)
     .then(function(response) {
@@ -120,15 +120,16 @@ function searchApiOneCall(cityLat, cityLon) {
 
       // Storing the weather icon code into a variable
       var weatherIconDay01 = data.daily[1].weather[0].icon;
-        
+      
       // Sets the weather icon for today
       var day01IconEl = document.getElementById("day1-icon");
+      // day01IconEl.parentNode.removeChild(day01IconEl); // I just added this trying to remove previous icons
       var newIconDay01 = document.createElement("img");
       newIconDay01.src="https://openweathermap.org/img/wn/" + weatherIconDay01 + ".png";
       day01IconEl.appendChild(newIconDay01);
 
       var day01Temp = data.daily[1].temp.max;
-      day01TempEl.textContent = "Temp: " + day01Temp;
+      day01TempEl.textContent = "Temp: " + day01Temp + "\xB0" + "F";
 
       var day01Wind = data.daily[1].wind_speed;
       day01WindEl.textContent = "Wind: " + day01Wind + " MPH";
@@ -152,7 +153,7 @@ function searchApiOneCall(cityLat, cityLon) {
 
 
       var day02Temp = data.daily[2].temp.max;
-      day02TempEl.textContent = "Temp: " + day02Temp;
+      day02TempEl.textContent = "Temp: " + day02Temp + "\xB0" + "F";
 
       var day02Wind = data.daily[2].wind_speed;
       day02WindEl.textContent = "Wind: " + day02Wind + " MPH";
@@ -176,7 +177,7 @@ function searchApiOneCall(cityLat, cityLon) {
 
 
       var day03Temp = data.daily[3].temp.max;
-      day03TempEl.textContent = "Temp: " + day03Temp;
+      day03TempEl.textContent = "Temp: " + day03Temp + "\xB0" + "F";
 
       var day03Wind = data.daily[3].wind_speed;
       day03WindEl.textContent = "Wind: " + day03Wind + " MPH";
@@ -199,7 +200,7 @@ function searchApiOneCall(cityLat, cityLon) {
       day04IconEl.appendChild(newIconDay04);
 
       var day04Temp = data.daily[4].temp.max;
-      day04TempEl.textContent = "Temp: " + day04Temp;
+      day04TempEl.textContent = "Temp: " + day04Temp + "\xB0" + "F";
 
       var day04Wind = data.daily[4].wind_speed;
       day04WindEl.textContent = "Wind: " + day04Wind + " MPH";
@@ -223,7 +224,7 @@ function searchApiOneCall(cityLat, cityLon) {
       day05IconEl.appendChild(newIconDay05);
 
       var day05Temp = data.daily[5].temp.max;
-      day05TempEl.textContent = "Temp: " + day05Temp;
+      day05TempEl.textContent = "Temp: " + day05Temp + "\xB0" + "F";
 
       var day05Wind = data.daily[5].wind_speed;
       day05WindEl.textContent = "Wind: " + day05Wind + " MPH";
@@ -248,104 +249,16 @@ function searchedCityButtons() {
     var searchedCity = localStorage.getItem("city");
     var newSearchedButton = document.createElement("button");
     newSearchedButton.classList = "searched-buttons";
+    newSearchedButton.addEventListener("click", function(event) {
+      console.log(event.currentTarget.innerHTML);
+      searchApiCurrent(event.currentTarget.innerHTML);
+    })
+
     searchedCitiesSection.appendChild(newSearchedButton);
     newSearchedButton.textContent = searchedCity;
 
-
-
 }
 
-
-
-
-
-/*
-function getIcon (weatherIconCurrent) {
-  var iconURL = "http://openweathermap.org/img/wn/" + weatherIconCurrent + "@.png";
-
-  fetch(iconURL)
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(data) {
-      console.log(data);
-
-      console.log(weatherIcon);
-      day00El.textContent = unixFormatDay00 + " " + weatherIcon;
-
-    })
-    .catch(function (error) {
-      alert('Unable to connect to OpenWeather icon API');
-    });
-
-
-
-}
-*/
-
-
-
-
-
-
-/*
-function printResults() {
-  console.log();
-  searchApiCurrent();
-
-  // Replace HTML id "city" with cityInput
-  cityEl.textContent = searchInputVal;
-
-  // Replace HTML id "current-date" with Moments.js current date
-  // Replace HTML id "today-temp" with today's temperature for the searched city.
-  todayTempEl.textContent = todayTemp;
-
-  // Replace HTML id "today-wind" with today's temperature for the searched city.
-  // Replace HTML id "today-humidity" with today's temperature for the searched city.
-  // Replace HTML id "today-uv-index" with today's temperature for the searched city.
-
-
-  // Replace HTML id "day-1" with forecast day 1 date for searched city.
-  // Replace HTML id "day-2" with forecast day 2 date for searched city.
-  // Replace HTML id "day-3" with forecast day 3 date for searched city.
-  // Replace HTML id "day-4" with forecast day 4 date for searched city.
-  // Replace HTML id "day-5" with forecast day 5 date for searched city.
-
-
-  // Replace HTML id "day-1-temp" with forecast day 1 temp for searched city.
-  // Replace HTML id "day-2-temp" with forecast day 2 temp for searched city.
-  // Replace HTML id "day-3-temp" with forecast day 3 temp for searched city.
-  // Replace HTML id "day-4-temp" with forecast day 4 temp for searched city.
-  // Replace HTML id "day-5-temp" with forecast day 5 temp for searched city.
-
-
-  // Replace HTML id "day-1-wind" with forecast day 1 wind for searched city.
-  // Replace HTML id "day-2-wind" with forecast day 2 wind for searched city.
-  // Replace HTML id "day-3-wind" with forecast day 3 wind for searched city.
-  // Replace HTML id "day-4-wind" with forecast day 4 wind for searched city.
-  // Replace HTML id "day-5-wind" with forecast day 5 wind for searched city.
-
-
-  // Replace HTML id "day-1-humidity" with forecast day 1 humidity for searched city.
-  // Replace HTML id "day-2-humidity" with forecast day 2 humidity for searched city.
-  // Replace HTML id "day-3-humidity" with forecast day 3 humidity for searched city.
-  // Replace HTML id "day-4-humidity" with forecast day 4 humidity for searched city.
-  // Replace HTML id "day-5-humidity" with forecast day 5 humidity for searched city.
-
-
-  // ORRRRRRR DO THIS: create new class="forecast-card" with the data
-  // Create 
-
-  // Create searched buttons
-  /*var buildSearchBtn = document.createElement("button");
-  var citySearched = localStorage.getItem("city");
-  buildSearchBtn.setAttribute("class", "buildSearchBtn");
-  buildSearchBtn.textContent = citySearched; */
-
-
-/*
-}
-*/
 
 
 
@@ -409,11 +322,7 @@ function handleSearchFormSubmitBtns(event) {
 
 
 
-
-
-
 searchBtn.addEventListener('click', handleSearchFormSubmit);
-searchedBtns.addEventListener('click', handleSearchFormSubmitBtns);
 
 
 
