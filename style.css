@@ -114,6 +114,8 @@
 
 #city-date {
     width: 100%;
+    display: flex;
+    background-color: cadetblue;
 }
 
 /*
@@ -127,6 +129,8 @@
     float: left;
 }
 */
+
+
 
 #today-card ul {
     list-style: none;
