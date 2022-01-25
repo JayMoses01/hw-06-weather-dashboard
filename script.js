@@ -59,20 +59,16 @@ function searchApiCurrent(searchInputVal) {
 
         var unixDay00 = data.dt;
         var unixFormatDay00 = moment.unix(unixDay00).format("MM/DD/YYYY");
+        day00El.textContent = unixFormatDay00;
 
+        // Stores the weather icon for today into a variable
         var weatherIconCurrent = data.weather[0].icon;
-        // Fix the code below. I should be creating or appending the HTML element instead--not the concat like I'm currently doing.
-        // var iconURL = "img src=" + "http://openweathermap.org/img/wn/" + weatherIconCurrent + "@.png" + "width='20' height='20'>";
-        // day00El.textContent = unixFormatDay00 + " " + iconURL;
-        // day00El.setAttribute('')
-
+        
+        // Sets the weather icon for today
         var day00IconEl = document.getElementById("today-icon");
-        //day00IconEl.append("<img src=" + "http://openweathermap.org/img/wn/" + weatherIconCurrent + "@.png");
-
-        var newIconToday = document.createElement("i");
-        day00IconEl.appendChild("<img src=" + "http://openweathermap.org/img/wn/" + weatherIconCurrent + "@.png" + ">");
-        currentDiv = document.getElementById("today-icon"); document.body.insertBefore(newIconToday, currentDiv);
-
+        var newIconToday = document.createElement("img");
+        newIconToday.src="https://openweathermap.org/img/wn/" + weatherIconCurrent + ".png";
+        day00IconEl.appendChild(newIconToday);
 
         var todayTemp = data.main.temp_max;
         todayTempEl.textContent = "Temp: " + todayTemp;
@@ -119,6 +115,16 @@ function searchApiOneCall(cityLat, cityLon) {
       var unixFormatDay01 = moment.unix(unixDay01).format("MM/DD/YYYY");
       day01El.textContent = unixFormatDay01;
 
+      // Storing the weather icon code into a variable
+      var weatherIconDay01 = data.daily[1].weather[0].icon;
+        
+      // Sets the weather icon for today
+      var day01IconEl = document.getElementById("day1-icon");
+      var newIconDay01 = document.createElement("img");
+      newIconDay01.src="https://openweathermap.org/img/wn/" + weatherIconDay01 + ".png";
+      day01IconEl.appendChild(newIconDay01);
+
+
       var day01Temp = data.daily[1].temp.max;
       day01TempEl.textContent = "Temp: " + day01Temp;
 
@@ -132,6 +138,16 @@ function searchApiOneCall(cityLat, cityLon) {
       var unixDay02 = data.daily[2].dt;
       var unixFormatDay02 = moment.unix(unixDay02).format("MM/DD/YYYY");
       day02El.textContent = unixFormatDay02;
+
+      // Storing the weather icon code into a variable
+      var weatherIconDay02 = data.daily[2].weather[0].icon;
+        
+      // Sets the weather icon for today
+      var day02IconEl = document.getElementById("day2-icon");
+      var newIconDay02 = document.createElement("img");
+      newIconDay02.src="https://openweathermap.org/img/wn/" + weatherIconDay02 + ".png";
+      day02IconEl.appendChild(newIconDay02);
+
 
       var day02Temp = data.daily[2].temp.max;
       day02TempEl.textContent = "Temp: " + day02Temp;
@@ -147,6 +163,16 @@ function searchApiOneCall(cityLat, cityLon) {
       var unixFormatDay03 = moment.unix(unixDay03).format("MM/DD/YYYY");
       day03El.textContent = unixFormatDay03;
 
+      // Storing the weather icon code into a variable
+      var weatherIconDay03 = data.daily[3].weather[0].icon;
+        
+      // Sets the weather icon for today
+      var day03IconEl = document.getElementById("day3-icon");
+      var newIconDay03 = document.createElement("img");
+      newIconDay03.src="https://openweathermap.org/img/wn/" + weatherIconDay03 + ".png";
+      day03IconEl.appendChild(newIconDay03);
+
+
       var day03Temp = data.daily[3].temp.max;
       day03TempEl.textContent = "Temp: " + day03Temp;
 
@@ -160,6 +186,15 @@ function searchApiOneCall(cityLat, cityLon) {
       var unixDay04 = data.daily[4].dt;
       var unixFormatDay04 = moment.unix(unixDay04).format("MM/DD/YYYY");
       day04El.textContent = unixFormatDay04;
+
+      // Storing the weather icon code into a variable
+      var weatherIconDay04 = data.daily[4].weather[0].icon;
+        
+      // Sets the weather icon for today
+      var day04IconEl = document.getElementById("day4-icon");
+      var newIconDay04 = document.createElement("img");
+      newIconDay04.src="https://openweathermap.org/img/wn/" + weatherIconDay04 + ".png";
+      day04IconEl.appendChild(newIconDay04);
 
       var day04Temp = data.daily[4].temp.max;
       day04TempEl.textContent = "Temp: " + day04Temp;
@@ -175,6 +210,15 @@ function searchApiOneCall(cityLat, cityLon) {
       var unixDay05 = data.daily[5].dt;
       var unixFormatDay05 = moment.unix(unixDay05).format("MM/DD/YYYY");
       day05El.textContent = unixFormatDay05;
+
+      // Storing the weather icon code into a variable
+      var weatherIconDay05 = data.daily[5].weather[0].icon;
+        
+      // Sets the weather icon for today
+      var day05IconEl = document.getElementById("day5-icon");
+      var newIconDay05 = document.createElement("img");
+      newIconDay05.src="https://openweathermap.org/img/wn/" + weatherIconDay05 + ".png";
+      day05IconEl.appendChild(newIconDay05);
 
       var day05Temp = data.daily[5].temp.max;
       day05TempEl.textContent = "Temp: " + day05Temp;
