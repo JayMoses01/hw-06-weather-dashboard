@@ -1,7 +1,7 @@
 var APIKey = "f0f85309843e99526e61a02c79ea8cea";
 var city = document.getElementById("city-input");
 var searchBtn = document.querySelector('#search-btn');
-
+var searchedBtns = document.querySelectorAll('#searched-buttons');
 
 // Replace HTML id "current-date" with Moments.js current date
 /* var dayMonth = moment().format("MM/DD/YYYY");
@@ -52,6 +52,9 @@ function searchApiCurrent(searchInputVal) {
       })
       .then(function(data) {
         console.log(data);
+
+
+        
 
         // Today's forecast details
         var cityName = data.name;
@@ -123,7 +126,6 @@ function searchApiOneCall(cityLat, cityLon) {
       var newIconDay01 = document.createElement("img");
       newIconDay01.src="https://openweathermap.org/img/wn/" + weatherIconDay01 + ".png";
       day01IconEl.appendChild(newIconDay01);
-
 
       var day01Temp = data.daily[1].temp.max;
       day01TempEl.textContent = "Temp: " + day01Temp;
@@ -240,6 +242,23 @@ function searchApiOneCall(cityLat, cityLon) {
 }
 
 
+function searchedCityButtons() {
+    // Creates a searched button
+    var searchedCitiesSection = document.getElementById("searched-cities");
+    var searchedCity = localStorage.getItem("city");
+    var newSearchedButton = document.createElement("button");
+    newSearchedButton.classList = "searched-buttons";
+    searchedCitiesSection.appendChild(newSearchedButton);
+    newSearchedButton.textContent = searchedCity;
+
+
+
+}
+
+
+
+
+
 /*
 function getIcon (weatherIconCurrent) {
   var iconURL = "http://openweathermap.org/img/wn/" + weatherIconCurrent + "@.png";
@@ -335,6 +354,11 @@ function printResults() {
 function handleSearchFormSubmit(event) {
     event.preventDefault();
   
+
+    // Clear weather icons
+    // var day01IconEl = document.getElementById("day1-icon");
+    // day01IconEl.removeChild(newIconDay01);
+
     var searchInputVal = document.querySelector('#city-input').value;
     localStorage.setItem("city",searchInputVal);
 
@@ -350,12 +374,46 @@ function handleSearchFormSubmit(event) {
    /* searchApiOneCall(); */
    /* printResults(); */
 
+    searchedCityButtons();
+
+}
+
+
+function handleSearchFormSubmitBtns(event) {
+  event.preventDefault();
+
+
+  // Clear weather icons
+  // var day01IconEl = document.getElementById("day1-icon");
+  // day01IconEl.removeChild(newIconDay01);
+
+  var searchInputVal = searchedBtns.textContent;
+  localStorage.setItem("city",searchInputVal);
+
+  if (!searchInputVal) {
+    console.error('You need a search input value!');
+    return;
+  }
+
+
+  console.log(searchInputVal);
+
+  searchApiCurrent(searchInputVal);
+ /* searchApiOneCall(); */
+ /* printResults(); */
+
+  searchedCityButtons();
+
 }
 
 
 
 
+
+
+
 searchBtn.addEventListener('click', handleSearchFormSubmit);
+searchedBtns.addEventListener('click', handleSearchFormSubmitBtns);
 
 
 
