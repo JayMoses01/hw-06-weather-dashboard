@@ -19,10 +19,10 @@
 
 .container {
     height: 100%;
-    border: 2px;
+  /*  border: 2px;
     border-width: 2px;
     border-style: solid;
-    border-color: black;
+    border-color: black; */
   /*  display: inline-block; */
    /* display: block; */
    /* display: inline; */
@@ -69,10 +69,10 @@
 
 .searched-cities {
     height: 100%;
-    border: 2px;
+   /* border: 2px;
     border-width: 2px;
     border-style: solid;
-    border-color: black;
+    border-color: black; */
     padding: 10px;
 }
 
@@ -89,10 +89,10 @@
 #right-section {
     width: 60%;
     height: 100%;
-    border: 2px;
+   /* border: 2px;
     border-width: 2px;
     border-style: solid;
-    border-color: black;
+    border-color: black; */
   /*  display: inline-block; */
     float: left;
   /*  display: flex; */
