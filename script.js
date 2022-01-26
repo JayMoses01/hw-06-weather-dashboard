@@ -67,6 +67,7 @@ function searchApiCurrent(searchInputVal) {
         
         // Sets the weather icon for today
         var day00IconEl = document.getElementById("today-icon");
+        day00IconEl.innerHTML = '';
         var newIconToday = document.createElement("img");
         newIconToday.src="https://openweathermap.org/img/wn/" + weatherIconCurrent + ".png";
         day00IconEl.appendChild(newIconToday);
@@ -119,7 +120,7 @@ function searchApiOneCall(cityLat, cityLon) {
       
       // Sets the weather icon for today
       var day01IconEl = document.getElementById("day1-icon");
-      // day01IconEl.parentNode.removeChild(day01IconEl); // I just added this trying to remove previous icons
+      day01IconEl.innerHTML = '';
       var newIconDay01 = document.createElement("img");
       newIconDay01.src="https://openweathermap.org/img/wn/" + weatherIconDay01 + ".png";
       day01IconEl.appendChild(newIconDay01);
@@ -143,6 +144,7 @@ function searchApiOneCall(cityLat, cityLon) {
         
       // Sets the weather icon for today
       var day02IconEl = document.getElementById("day2-icon");
+      day02IconEl.innerHTML = '';
       var newIconDay02 = document.createElement("img");
       newIconDay02.src="https://openweathermap.org/img/wn/" + weatherIconDay02 + ".png";
       day02IconEl.appendChild(newIconDay02);
@@ -167,6 +169,7 @@ function searchApiOneCall(cityLat, cityLon) {
         
       // Sets the weather icon for today
       var day03IconEl = document.getElementById("day3-icon");
+      day03IconEl.innerHTML = '';
       var newIconDay03 = document.createElement("img");
       newIconDay03.src="https://openweathermap.org/img/wn/" + weatherIconDay03 + ".png";
       day03IconEl.appendChild(newIconDay03);
@@ -191,6 +194,7 @@ function searchApiOneCall(cityLat, cityLon) {
         
       // Sets the weather icon for today
       var day04IconEl = document.getElementById("day4-icon");
+      day04IconEl.innerHTML = '';
       var newIconDay04 = document.createElement("img");
       newIconDay04.src="https://openweathermap.org/img/wn/" + weatherIconDay04 + ".png";
       day04IconEl.appendChild(newIconDay04);
@@ -215,6 +219,7 @@ function searchApiOneCall(cityLat, cityLon) {
         
       // Sets the weather icon for today
       var day05IconEl = document.getElementById("day5-icon");
+      day05IconEl.innerHTML = '';
       var newIconDay05 = document.createElement("img");
       newIconDay05.src="https://openweathermap.org/img/wn/" + weatherIconDay05 + ".png";
       day05IconEl.appendChild(newIconDay05);
@@ -263,9 +268,6 @@ function handleSearchFormSubmit(event) {
     event.preventDefault();
   
 
-    // Clear weather icons
-    // var day01IconEl = document.getElementById("day1-icon");
-    // day01IconEl.removeChild(newIconDay01);
 
     var searchInputVal = document.querySelector('#city-input').value;
     localStorage.setItem("city",searchInputVal);
@@ -289,11 +291,6 @@ function handleSearchFormSubmit(event) {
 function handleSearchFormSubmitBtns(event) {
   event.preventDefault();
 
-
-  // Clear weather icons
-  // var day01IconEl = document.getElementById("day1-icon");
-  // day01IconEl.removeChild(newIconDay01);
-
   var searchInputVal = searchedBtns.textContent;
   localStorage.setItem("city",searchInputVal);
 
@@ -307,15 +304,9 @@ function handleSearchFormSubmitBtns(event) {
 
   searchApiCurrent(searchInputVal);
 
-
   searchedCityButtons();
 
 }
 
 
-
-
 searchBtn.addEventListener('click', handleSearchFormSubmit);
-
-
-
