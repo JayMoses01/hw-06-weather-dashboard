@@ -110,6 +110,16 @@ function searchApiOneCall(cityLat, cityLon) {
       var todayUVI = data.current.uvi;
       todayUVEl.textContent = "UV Index: " + todayUVI;
 
+      // Changes "UV Index" color based on UV index
+      if (todayUVI < 2) {
+        todayUVEl.style.color = "green";
+      } else if (todayUVI < 6){
+        todayUVEl.style.color = "orange";
+      } else if (todayUVI > 6){
+        todayUVEl.style.color = "red";
+      }
+
+
       // 5-day forecast: day 1 details
       var unixDay01 = data.daily[1].dt;
       var unixFormatDay01 = moment.unix(unixDay01).format("MM/DD/YYYY");
