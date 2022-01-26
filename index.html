@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./style.css" />
-  <!-- <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet"> -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"> -->
-  <!-- <link rel="stylesheet" href="./jass.css" /> -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"> -->
-   <title>Weather Dashboard</title>
+  <title>Weather Dashboard</title>
 </head>
 
 
@@ -20,8 +16,10 @@
 
 <body class="container" id="container">
 
+    <!--This is everything on the left side like the city search and associated cities searched buttons.-->
     <section class="left-section" id="left-section">
 
+        <!--The search text field and button.-->
         <section class="search-container" id="search-container">
             <h3 class="search-city">Search for a City</h3>
               <form id="user-form" class="card-body">
@@ -31,13 +29,16 @@
               </form>
         </section>
 
+        <!--The searched cities will show up here as buttons.-->
         <section class="searched-cities" id="searched-cities">
         </section>
 
     </section>
 
+    <!--This is everything on the right side like the today card and 5-day forecast.-->
     <section class="right-section" id="right-section">
 
+        <!--This is the today weather card.-->
         <div id="today-card">
             <div id="city-date">
                 <h2 id="city"></h2>
@@ -54,6 +55,7 @@
 
         </div>
       
+        <!--This is the 5-day forecast section.-->
         <div id="forecast-section">
             <h2 id="forecast-title">5-Day Forecast:</h2>
             <div class="forecast-cards-div" id="forecast-cards-div">
