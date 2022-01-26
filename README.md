@@ -9,6 +9,7 @@ I created a weather dashboard with this functionality:
 * A 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity.
 * The user can click on searched cities, which again present the current and future conditions for that city.
 
+
 # Screenshots of deployed application
 
 ![image](https://user-images.githubusercontent.com/95326705/151087471-ca842313-d6d8-4770-a223-1d72a79deb23.png)
