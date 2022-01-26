@@ -4,7 +4,7 @@
 # Description
 
 I created a weather dashboard with this functionality:
-* The user can search for a city and get current and future weather conditions for that city, and each searched city is added to the search history as re-searchable buttons.
+* The user can search for a city and view current and future weather conditions for that city, and each searched city is added to the search history as re-searchable buttons.
 * The current weather conditions area displays the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index.
 * The UV index is color-coded based on value.
 * A 5-day forecast displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity.
