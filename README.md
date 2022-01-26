@@ -6,6 +6,7 @@
 I created a weather dashboard with this functionality:
 * The user can search for a city and get current and future weather conditions for that city, and each searched city is added to the searh history.
 * The current weather conditions area displays the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index.
+* The UV index is color-coded based on value.
 * A 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity.
 * The user can click on searched cities, which again present the current and future conditions for that city.
 
