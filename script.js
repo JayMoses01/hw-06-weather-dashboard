@@ -1,12 +1,10 @@
+// Variables for Open Weather API key, city input, and search buttons.
 var APIKey = "f0f85309843e99526e61a02c79ea8cea";
 var city = document.getElementById("city-input");
 var searchBtn = document.querySelector('#search-btn');
 var searchedBtns = document.querySelectorAll('#searched-buttons');
 
-// Replace HTML id "current-date" with Moments.js current date
-/* var dayMonth = moment().format("MM/DD/YYYY");
-$("#current-date").text(dayMonth); */
-
+// Variables to get various HTML file elements.
 var cityEl = document.getElementById("city");
 var todayTempEl = document.getElementById("today-temp");
 var todayWindEl = document.getElementById("today-wind");
@@ -42,7 +40,7 @@ var searchInputVal = document.querySelector('#city-input').value;
 
 
 
-
+// Function to get data for Open Weather current weather API and then update the HTML/DOM.
 function searchApiCurrent(searchInputVal) {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchInputVal + "&units=imperial" + "&appid=" + APIKey;
 
@@ -89,9 +87,7 @@ function searchApiCurrent(searchInputVal) {
 
         searchApiOneCall(cityLat, cityLon);
 
-        /*
-        var weatherIconCurrent = data.weather[0].icon;
-        getIcon(weatherIconCurrent); */
+
 
       })
       .catch(function (error) {
@@ -100,7 +96,7 @@ function searchApiCurrent(searchInputVal) {
 
 }
 
-
+// Function to get data for Open Weather One Call weather API and then update the HTML/DOM.
 function searchApiOneCall(cityLat, cityLon) {
   var queryURLOne = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&units=imperial" + "&appid=" + APIKey;
   
@@ -242,7 +238,7 @@ function searchApiOneCall(cityLat, cityLon) {
 
 }
 
-
+// Function to create searched city buttons and to make them re-searchable
 function searchedCityButtons() {
     // Creates a searched button
     var searchedCitiesSection = document.getElementById("searched-cities");
@@ -262,8 +258,7 @@ function searchedCityButtons() {
 
 
 
-// Search button event listener to commit to local storage, add a searched city button, and populate "today-card" and forecast cards.
-
+// Search button event listener to commit the search city name to local storage, get weather details via API and run those functions, and run the function to add searched city buttons.
 function handleSearchFormSubmit(event) {
     event.preventDefault();
   
@@ -284,8 +279,7 @@ function handleSearchFormSubmit(event) {
     console.log(searchInputVal);
 
     searchApiCurrent(searchInputVal);
-   /* searchApiOneCall(); */
-   /* printResults(); */
+
 
     searchedCityButtons();
 
@@ -312,8 +306,7 @@ function handleSearchFormSubmitBtns(event) {
   console.log(searchInputVal);
 
   searchApiCurrent(searchInputVal);
- /* searchApiOneCall(); */
- /* printResults(); */
+
 
   searchedCityButtons();
 
