@@ -23,7 +23,21 @@ I created a weather dashboard with this functionality:
 URL: https://jaymoses01.github.io/hw-06-weather-dashboard/
 
 
-# MIT License
+# Technologies used
+
+This application utlizes these technologies:
+* HTML
+* CSS
+* JavaScript
+
+
+# Contact information
+
+* Website: https://jaymoses01.github.io/hw-08-updated-portfolio-page/
+* Email: JayRMoses@gmail.com
+
+
+# MIT license
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
