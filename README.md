@@ -26,6 +26,8 @@ URL: https://jaymoses01.github.io/hw-06-weather-dashboard/
 # Technologies used
 
 This application utlizes these technologies:
+* OpenWeather Current Weather API
+* OpenWeather One Call API
 * HTML
 * CSS
 * JavaScript
